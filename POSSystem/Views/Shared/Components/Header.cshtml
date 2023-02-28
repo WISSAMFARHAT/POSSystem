@@ -1,0 +1,20 @@
+﻿@using System.Globalization;
+@{
+    string rate = ViewData["rate"] as string;
+    rate = decimal.Parse(rate).ToString("C", new CultureInfo("ar-LB"));
+}
+<header class="header">
+    <article>
+        <div class="header-logo">
+            <p>Mini Market Farhat</p>
+        </div>
+        <div class="header-change">
+            <p>Dollar Rate: <span>@rate</span></p>
+        </div>
+        <div class="header-buttons">
+            <button class="--button showPopupAdd">New/Update Product</button>
+            <button class="--button" id="clear"><partial name="Assets/Clear" /></button>
+            <button class="--button" id="qrcode"><partial name="Assets/Qrcode" /></button>
+        </div>
+    </article>
+</header>

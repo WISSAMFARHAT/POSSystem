@@ -1,0 +1,121 @@
+﻿@import "variable.less";
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+body {
+    header, footer {
+        width: 100%;
+
+        > div, article {
+            max-width: var(--maxWidth);
+            margin-inline: auto;
+            padding-inline: 20px;
+        }
+    }
+
+    main {
+        padding-top: var(--headerHeight);
+
+        section {
+            width: 100%;
+
+            > div, > article {
+                max-width: var(--maxWidth);
+                width: 100%;
+                padding-inline: 20px;
+                margin-inline: auto;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .--button {
+        width: fit-content;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        color: var(--whiteColor);
+        background-color: transparent;
+        transition: all var(--duration);
+        cursor: pointer;
+
+        svg {
+            width: 30px;
+            display: inline-block;
+            fill: var(--whiteColor);
+            transition: all var(--duration);
+        }
+
+        &:hover {
+            color: var(--yellowColor);
+
+            svg {
+                fill: var(--yellowColor);
+            }
+        }
+
+        &._primary{
+            border:1px solid var(--primaryColor);
+            background-color:var(--primaryColor);
+            color:var(--whiteColor);
+            border-radius:var(--raduis);
+            max-width:250px;
+            width:100%;
+            &:hover{
+                background-color:transparent;
+                color:var(--primaryColor);
+            }
+        }
+    }
+
+    .--input {
+        max-width: 250px;
+        width: 100%;
+        border: 1px solid var(--secondaryColor);
+        outline: none;
+        padding: 10px 15px;
+        color: var(--secondaryColor);
+        font-size: 1rem;
+        border-radius: var(--raduis);
+        box-shadow: 0 0 5px var(--greyColor);
+        direction:ltr;
+    }
+
+    .--card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+        box-shadow: 0px 1px 18px 2px #22262f17;
+        border-radius: var(--raduis);
+        align-items: center;
+
+        span {
+            font-size: 2rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--primaryColor);
+            width: 100%;
+            text-align: center;
+            padding-block: 5px;
+        }
+
+        p {
+            font-size: 2rem;
+            text-align: center;
+            margin-block:20px 0;
+        }
+    }
+}
+

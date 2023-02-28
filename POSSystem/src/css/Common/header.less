@@ -1,0 +1,61 @@
+﻿@import "variable.less";
+
+body{
+    .header{
+        display:none;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    body {
+        .header {
+            background-color: var(--primaryColor);
+            width: 100%;
+            position: relative;
+            display:block;
+            > article {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 5px 30px;
+            }
+
+            &-logo {
+                font-size: 1.5rem;
+                line-height: 0;
+                margin: 0;
+                color: var(--whiteColor);
+
+                svg {
+                    width: 100%;
+
+                    .--svg-fill {
+                        fill: var(--whiteColor);
+                    }
+                }
+            }
+
+            &-change {
+                p {
+                    font-size: 1.2rem;
+                    margin: 0;
+                    color: var(--whiteColor);
+
+                    span {
+                        color: var(--whiteColor);
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            &-buttons {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+﻿@{
+    Html.Bundle("css/index.css");
+
+    string rate = ViewData["rate"] as string;
+}
+
+<input type="text" hidden name="rateinput" value="@rate" />
+
+<section class="pos">
+    <article>
+        <div class="pos-system">
+            <div class="pos-system-top">
+                <div class="pos-system-top-scan">
+                    <span>Barcode: </span>
+                    <input type="text" name="qrcode" class="--input" spellcheck="false" />
+                </div>
+                <div class="pos-system-top-change">
+                    <span>Change Dollar Rate: </span>
+                    <button class="--button" id="dollarPopup"><partial name="Assets/Dollar" /></button>
+                </div>
+            </div>
+            <div class="pos-system-table">
+                <div class="pos-system-table-header">
+                    <span>Barcode</span>
+                    <span>Name</span>
+                    <span>Price</span>
+                    <span>Delete</span>
+                </div>
+                <div class="pos-system-table-main" id="table">
+                </div>
+            </div>
+            <div class="pos-system-footer">
+                <div class="--card">
+                    <span>Total</span>
+                    <p class="total">0</p>
+                </div>
+                <div class="--card">
+                    <span>Quantity</span>
+                    <p class="quantiter">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="pos-buttons">
+            <div>
+                <button onclick="AutoBarcode(1)">كرتونة بيض</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(2)">بيضة</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(3)">كباية بلاستيك</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(4)">كباية شاي</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(5)">كلينكس ناعم</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(6)">كلينكس خشن</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(7)">شوال كلينكس ناعم</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(8)">شوال كلينكس خشن </button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(9)">شفرة Gillette </button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(10)">شفرة Astor </button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(11)">بالون عادي </button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(12)">زيت سليم (1.8)</button>
+            </div>
+            <div>
+                <button onclick="AutoBarcode(13)">زيت سليم (4 l)</button>
+            </div>
+        </div>
+    </article>
+</section>
+
+<section class="add popup">
+    <article class="inside">
+        <div>
+            <span>Barcode</span>
+            <input type="text" name="addCode" autocomplete="off" class="--input" />
+        </div>
+        <div>
+            <span>Name Product</span>
+            <input type="text" name="addname" autocomplete="off" class="--input" />
+        </div>
+        <div>
+            <div>
+                <span>Price</span>
+                <label>
+                    <input type="checkbox" value="LB" id="lb" name="LB" />
+                    <sapn for="#lb">LB</sapn>
+                </label>
+            </div>
+            <input type="text" name="addprice" autocomplete="off" class="--input" />
+        </div>
+        <button id="submit" class="--button _primary">Save</button>
+        <button class="--button close">
+            X
+        </button>
+        <span class="message">done</span>
+    </article>
+</section>
+<section class="change popup">
+    <article class="inside">
+        <div>
+            <span>Dollar Rate</span>
+            <input type="text" name="changeDollar" class="--input" />
+        </div>
+        <button id="submitChange" class="--button _primary">Update</button>
+        <button class="--button close">
+            X
+        </button>
+        <span class="messagechange">done</span>
+    </article>
+</section>
+
+<section class="responsive">
+    <article>
+        <p>You need a screen width of 1200px to use the Mini Market Farhat POS system.</p>
+    </article>
+</section>
