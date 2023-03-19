@@ -1,12 +1,12 @@
 ﻿@using System.Globalization;
 @{
     string rate = ViewData["rate"] as string;
-    rate = decimal.Parse(rate).ToString("C", new CultureInfo("ar-LB"));
+    rate = decimal.Parse(rate?? "0").ToString("C", new CultureInfo("ar-LB"));
 }
 <header class="header">
     <article>
         <div class="header-logo">
-            <p>Mini Market Farhat</p>
+            <button id="open">Mini Market Farhat</button>
         </div>
         <div class="header-change">
             <p>Dollar Rate: <span>@rate</span></p>

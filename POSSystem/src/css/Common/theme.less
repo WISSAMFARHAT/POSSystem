@@ -1,41 +1,9 @@
-﻿@import "variable.less";
-
-html, body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    user-select: none;
-}
-
-img {
-    pointer-events: none;
-}
+﻿
+@import "variable.less";
 
 body {
-    header, footer {
-        width: 100%;
-
-        > div, article {
-            max-width: var(--maxWidth);
-            margin-inline: auto;
-            padding-inline: 20px;
-        }
-    }
-
     main {
         padding-top: var(--headerHeight);
-
-        section {
-            width: 100%;
-
-            > div, > article {
-                max-width: var(--maxWidth);
-                width: 100%;
-                padding-inline: 20px;
-                margin-inline: auto;
-                overflow: hidden;
-            }
-        }
     }
 
     .--button {

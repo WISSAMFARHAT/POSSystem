@@ -6,6 +6,7 @@ namespace POSSystem.Data;
 
 public partial class DikaneContext : DbContext
 {
+  
     public DikaneContext()
     {
     }
@@ -19,7 +20,7 @@ public partial class DikaneContext : DbContext
     public virtual DbSet<Rate> RateDollar { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=localhost;port=3306;database=Dikane;uid=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.31-mysql"));
+        => optionsBuilder.UseMySql("server=localhost;port=3306;database=Dikane;uid=root", Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect("server=localhost;port=3306;database=Dikane;uid=root"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

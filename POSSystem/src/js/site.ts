@@ -3,6 +3,7 @@ const popupAdd = document.querySelectorAll(".showPopupAdd");
 const popupAddShow = document.querySelector(".add") as HTMLDivElement;
 const popup = document.querySelectorAll(".popup");
 const popupDollarShow = document.querySelector(".change") as HTMLDivElement;
+const generateQrCode = document.querySelector(".generate") as HTMLDivElement;
 const popupClose = document.querySelectorAll(".close");
 const dollarPopup = document.querySelector("#dollarPopup") as HTMLButtonElement;
 const clearAll = document.querySelector("#clear") as HTMLButtonElement;
@@ -20,7 +21,9 @@ const messagechange = document.querySelector(".messagechange") as HTMLSpanElemen
 const table = document.querySelector("#table") as HTMLDivElement;
 const total = document.querySelector(".total") as HTMLSpanElement;
 const quantiter = document.querySelector(".quantiter") as HTMLSpanElement;
-
+const open = document.querySelector("#open") as HTMLButtonElement;
+const qrcodeButton = document.querySelector("#qrcode") as HTMLButtonElement;
+const inside = document.querySelector(".inside-qr") as HTMLDivElement;
 
 
 popupAdd.forEach(item => {
@@ -32,6 +35,11 @@ popupClose.forEach(item => {
     item.addEventListener("click", function () {
         popupAddShow.style.display = "none";
         popupDollarShow.style.display = "none";
+        generateQrCode.style.display = "none";
+        codeAdd.value = "";
+        nameAdd.value = "";
+        priceAdd.value = "";
+        changeDollar.value = "";
     });
 })
 dollarPopup.addEventListener("click", function () {
@@ -43,6 +51,7 @@ popup.forEach((popupdiv) => {
         if (!article.contains(event.target as Node)) {
             popupAddShow.style.display = "none";
             popupDollarShow.style.display = "none";
+            generateQrCode.style.display = "none";
             codeAdd.value = "";
             nameAdd.value = "";
             priceAdd.value = "";
@@ -156,7 +165,6 @@ codeAdd.addEventListener("keypress", async function (event) {
 
     }
 })
-
 qrcode.addEventListener("keypress", async function (event) {
 
     if (event.keyCode === 13) {
@@ -175,13 +183,12 @@ clearAll.addEventListener("click", function () {
 
     updateInfoPrice();
 })
-
 function Remove(guid) {
- 
+
     let rowTable = document.querySelectorAll(".table-row");
 
     for (let i = 0; i < rowTable.length; i++) {
-        
+
         let dataRow = (rowTable[i] as HTMLDivElement).dataset.id;
 
         if (dataRow === guid) {
@@ -190,10 +197,8 @@ function Remove(guid) {
     }
 
     updateInfoPrice();
-    
+
 }
-
-
 function generateGuid() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0,
@@ -201,8 +206,6 @@ function generateGuid() {
         return v.toString(16);
     });
 }
-
-
 function updateInfoPrice() {
 
     let pricelist = document.querySelectorAll(".pricelist");
@@ -219,14 +222,10 @@ function updateInfoPrice() {
         minimumFractionDigits: 0,
     });
 }
-
 async function AutoBarcode(value) {
-
     await AddRow(value);
 }
-
-async function AddRow(value)
-{
+async function AddRow(value) {
 
     const data = await fetch("/Api/fetch", {
         method: 'POST',
@@ -249,9 +248,11 @@ async function AddRow(value)
 
         var span2 = document.createElement("span");
         span2.innerHTML = result.name;
+        span2.className = "listName";
 
         var span3 = document.createElement("span");
         span3.className = "pricelist";
+
         if (result.lbcheck == true) {
             span3.innerHTML = result.price;
         }
@@ -288,3 +289,64 @@ async function AddRow(value)
 
     updateInfoPrice();
 }
+document.addEventListener("keydown", async function (event: KeyboardEvent) {
+
+    if (event.key === "Escape") {
+        await OpenCash();
+    }
+    if (event.key === "Control") {
+        qrcode.focus();
+    }
+
+    if (event.key === "Delete") {
+
+        table.innerHTML = "";
+        updateInfoPrice();
+        await OpenCash();
+        qrcode.focus();
+    }
+
+});
+open.addEventListener("click", async function () {
+    await OpenCash();
+
+});
+async function OpenCash() {
+     await fetch("/CashDraswer", {
+        method: 'POST',
+
+    });
+}
+
+qrcodeButton.addEventListener("click", async function () {
+    generateQrCode.style.display = "flex";
+    //inside.innerHTML = "";
+    //const listName = document.querySelectorAll(".listName");
+    //const listPrice = document.querySelectorAll(".pricelist");
+    //let name=[];
+    //let price=[];
+
+    //for (let i = 0; i < listName.length; i++) {
+    //    name.push(listName[i].innerHTML);
+    //    price.push(listPrice[i].innerHTML);
+
+    //}
+
+    //const data = await fetch("/Qrcode", {
+    //    method: 'POST',
+    //    headers: {
+    //        'Content-Type': 'application/json',
+    //    },
+    //    body: JSON.stringify({
+    //        Name: name,
+    //        Price: price,
+    //    })
+
+    //});
+
+    //var result =await  data.text();
+
+    //if (result != "error") {
+    //    inside.innerHTML = result;
+
+})

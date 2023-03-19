@@ -49,6 +49,8 @@ body .responsive > article p {
     align-items: flex-start;
     gap: 10px;
     min-height: 85vh;
+    overflow: visible;
+    margin-inline: auto;
   }
   body .pos-system {
     display: flex;
@@ -284,7 +286,8 @@ body .responsive > article p {
     color: var(--yellowColor);
   }
   body .add,
-  body .change {
+  body .change,
+  body .generate {
     display: none;
   }
   body .message,

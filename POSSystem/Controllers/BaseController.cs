@@ -1,6 +1,8 @@
-﻿namespace POSSystem.Controllers
+﻿using AngryMonkey.CloudMVC;
+
+namespace POSSystem.Controllers
 {
-    public class BaseController : CoreController
+    public class BaseController : CloudController
     {
        
     }
