@@ -350,3 +350,5 @@ qrcodeButton.addEventListener("click", async function () {
     //    inside.innerHTML = result;
 
 })
+
+qrcode.focus();
